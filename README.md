@@ -1,0 +1,2 @@
+# Shopping client in python #
+

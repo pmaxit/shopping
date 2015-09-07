@@ -1,0 +1,23 @@
+<div class="col-lg-3 content-left">
+    {% include 'search.html' %}
+
+    <h4>Categories</h4>
+       <div class="list-group categories">
+        {% for category in categories %}
+            <div class="list-group-item">{{ category }}
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+
+            <div class="list-subgroups">
+                {% for child in category.child.all %}
+
+                    <a href="{% url 'single_category' child.slug %}" class="list-subgroup-item">{{ child }}</a>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+    </div>
+
+    {% include 'new-classifieds.html' %}
+
+</div>

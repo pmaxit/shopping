@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="..."/>
+    <meta name="keywords" content="..."/>
+    <meta name="author" content="..."/>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen"/>
+    <link href="{% static 'css/czsale.css' %}" rel="stylesheet" media="screen"/>
+    <link href="{% static 'css/czsale-responsive.css' %}" rel="stylesheet" media="screen"/>
+    <title>{% block title %} UTD - Sale items {% endblock %}</title>
+</head>
+<body>
+<div class="container wrapper">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="index.html"><img src="{% static 'img/1316.png' %}" width="120" height="120"></a>
+    </div>
+
+    {% include 'navbar.html' %}
+
+    {% include 'content-left.html' %}
+
+    {% block content-right%}
+        Content right
+    {% endblock %}
+
+    {% include 'footer.html' %}
+</div>
+<!-- JS -->
+<script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/respond.min.js' %}"></script>
+<script src="{% static 'js/jquery.slides.min.js' %}"></script>
+<script src="{% static 'js/shopping.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        // Drop down menu handler
+        $('.dropdown-menu').find('form').click(function (e) {
+            e.stopPropagation();
+        });
+        // Slider
+        $("#slides").slidesjs({
+            width: 900,
+            height: 300,
+            navigation: false,
+            play: {
+                active: false,
+                effect: "slide",
+                interval: 4000,
+                auto: true,
+                swap: false,
+                pauseOnHover: true,
+                restartDelay: 2500
+            }
+        });
+    });
+</script>
+<!-- /JS -->
+</body>
+</html>
