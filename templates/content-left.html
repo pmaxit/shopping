@@ -4,14 +4,24 @@
     <h4>Categories</h4>
        <div class="list-group categories">
         {% for category in categories %}
+            {% if category in path %}
+                <div class="list-group-item active">{{ category }}
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </div>
+            {% else %}
             <div class="list-group-item">{{ category }}
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </div>
 
-            <div class="list-subgroups">
+            {% endif %}
+                <div class="list-subgroups">
                 {% for child in category.child.all %}
+                    {% if child in path %}
+                        <a href="{% url 'single_category' child.slug %}" class="list-subgroup-item active">{{ child }}</a>
+                    {% else %}
+                        <a href="{% url 'single_category' child.slug %}" class="list-subgroup-item">{{ child }}</a>
+                    {% endif %}
 
-                    <a href="{% url 'single_category' child.slug %}" class="list-subgroup-item">{{ child }}</a>
                 {% endfor %}
             </div>
 

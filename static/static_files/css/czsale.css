@@ -32,9 +32,15 @@ a:hover {
   font-weight: bold; 
 }
 
-.list-group-item:hover, .list-group-item.active, .list-group-item.active:hover {
+.list-group-item:hover {
   border-color: #ddd;
   background-color: #d9534f;
+  color: #fff;
+}
+
+.list-group-item.active, .list-group-item.active:hover{
+  border-color: #ddd;
+  background-color: #918e96;
   color: #fff;
 }
 

@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    $('.active').next('.list-subgroups').show();
     $(".list-group-item").click(function(event){
 
         // if it is already active, we won't do anything
@@ -14,5 +16,6 @@ $(document).ready(function(){
         $(this).next('.list-subgroups').slideToggle('slow')
 
         $(this).addClass('active')
-    })
-})
+        })
+    }
+);
