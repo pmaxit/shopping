@@ -74,6 +74,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'shopping.wsgi.application'
 
+FABRIC = {
+      "SSH_USER": "puneet", # SSH username
+      "SSH_PASS":  "dreamz", # SSH password (consider key-based authentication)
+      "SSH_KEY_PATH":  "", # Local path to SSH key file, for key-based auth
+      "HOSTS": ["ec2-52-88-131-230.us-west-2.compute.amazonaws.com",], # List of hosts to deploy to
+      "VIRTUALENV_HOME":  "/opt/django9", # Absolute remote path for virtualenvs
+      "PROJECT_NAME": "webapp", # Unique identifier for project
+      "REQUIREMENTS_PATH": "requirements.txt", # Path to pip requirements, relative to project
+      "GUNICORN_PORT": 8100, # Port gunicorn will listen on
+      "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
+      "LIVE_HOSTNAME": "www.example.com", # Host for public site.
+      "REPO_URL": "https://github.com/pmaxit/shopping.git", # Git or Mercurial remote repo URL for the project
+      "DB_PASS": "dreamz", # Live database password
+      "ADMIN_PASS": "", # Live admin user password
+  }
+
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -106,8 +122,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,"static", "media")
-STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root")
+MEDIA_ROOT = os.path.join(BASE_DIR,"static", "media/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root/")
 
 
 STATICFILES_DIRS = (
