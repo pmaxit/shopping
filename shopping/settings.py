@@ -39,7 +39,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'crispy_forms',
     'products',
+    'userprofile',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,8 +81,8 @@ FABRIC = {
       "SSH_USER": "puneet", # SSH username
       "SSH_PASS":  "dreamz", # SSH password (consider key-based authentication)
       "SSH_KEY_PATH":  "", # Local path to SSH key file, for key-based auth
-      "HOSTS": ["ec2-52-88-131-230.us-west-2.compute.amazonaws.com",], # List of hosts to deploy to
-      "VIRTUALENV_HOME":  "/opt/django9", # Absolute remote path for virtualenvs
+      "HOSTS": ["ec2-52-26-233-28.us-west-2.compute.amazonaws.com",], # List of hosts to deploy to
+      "VIRTUALENV_HOME":  "/opt/django", # Absolute remote path for virtualenvs
       "PROJECT_NAME": "webapp", # Unique identifier for project
       "REQUIREMENTS_PATH": "requirements.txt", # Path to pip requirements, relative to project
       "GUNICORN_PORT": 8100, # Port gunicorn will listen on
@@ -125,6 +128,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"static", "media/")
 STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root/")
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static", "static_files"),

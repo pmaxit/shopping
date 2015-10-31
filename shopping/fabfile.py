@@ -119,7 +119,6 @@ def update_changed_requirements():
     and gets new requirements if changes have occurred.
     """
     reqs_path = join(env.proj_path, env.reqs_path)
-    print "REQUIREMETNS ........" , reqs_path
     get_reqs = lambda: run("cat %s" % reqs_path, show=False)
     old_reqs = get_reqs() if env.reqs_path else ""
     yield
@@ -443,9 +442,6 @@ def deploy():
     collect any new static assets, and restart gunicorn's work
     processes for the project.
     """
-    with project():
-        env.static_root = static()
-        env.static_url = static_url()
     if not exists(env.venv_path):
         prompt = raw_input("\nVirtualenv doesn't exist: %s\nWould you like "
                            "to create it? (yes/no) " % env.proj_name)
@@ -453,8 +449,7 @@ def deploy():
             print "\nAborting!"
             return False
         create()
-    for name in get_templates():
-        upload_template_and_reload(name)
+    
     with project():
         #backup("last.db")
         #if exists(static_dir):
@@ -467,6 +462,12 @@ def deploy():
         manage("collectstatic -v 0 --noinput")
         manage("syncdb --noinput")
         manage("migrate --noinput")
+        env.static_root = static()
+        env.static_url = static_url()
+    
+    for name in get_templates():
+        upload_template_and_reload(name)
+    
     restart()
     return True
 

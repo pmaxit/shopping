@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load product_extras %}
 
 {% block content-right %}
 <div class="row content">
@@ -14,8 +15,11 @@
                         class="icon-chevron-left icon-large"></i></a>
                 <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
             </div>
-            <h4>Recommended</h4>
+            {% mycomment %}
+            <h4>{{ recommended | lower }} {% current_time "%Y-%M-%D"%}</h4>
+                <div> new comment </div>
 
+            {% endmycomment %}
             <div class="row selected-classifieds">
                 <div class="col-lg-3">
                     <div class="thumbnail">
