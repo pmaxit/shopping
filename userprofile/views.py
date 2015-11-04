@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.views import generic
 from django.views.generic import View
 from django.shortcuts import render
-from forms import UserProfileForm, RegistrationForm
+from forms import UserProfileForm, RegistrationForm, SignUpForm
 
 # Create your views here.
 
@@ -28,10 +28,9 @@ class MyFormView(View):
 
 
 class SignUpView(generic.CreateView):
-    form_class = RegistrationForm
+    form_class = SignUpForm
     model = UserProfile
     template_name = 'userprofile/update_profile.html'
-
 
 
 @login_required

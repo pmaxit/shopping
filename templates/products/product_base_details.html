@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load product_extras %}
 
+{% block content-right %}
 <div class="col-lg-9 content-right">
-    <ol class="breadcrumb">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">Cell Phones & Accessories</a></li>
-        <li><a href="#">Smartphones</a></li>
-    </ol>
-    <h2>Samsung Galaxy S4</h2>
+
+    <h2> {{ product.name }}</h2>
 
     <div class="row">
         <div class="col-md-8">
@@ -45,63 +42,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs">
-                    <ul class="list-inline">
-                        <li><a id="carousel-selector-0" class="selected"><img src="img/classifieds/galaxy-s4.jpg"
-                                                                              class="img-responsive"/></a></li>
-                        <li><a id="carousel-selector-1"><img src="http://placehold.it/1024x768/e0e0e0/&text=Image+2"
-                                                             class="img-responsive"/></a></li>
-                        <li><a id="carousel-selector-2"><img src="http://placehold.it/1024x768/e0e0e0/&text=Image+3"
-                                                             class="img-responsive"/></a></li>
-                        <li><a id="carousel-selector-3"><img src="http://placehold.it/1024x768/e0e0e0/&text=Image+4"
-                                                             class="img-responsive"/></a></li>
-                        <li><a id="carousel-selector-4"><img src="http://placehold.it/1024x768/e0e0e0/&text=Image+5"
-                                                             class="img-responsive"/></a></li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
         <div class="col-md-4">
-            <table class="table table-condensed table-hover">
-                <thead>
-                <th colspan="2">Details:</th>
-                </thead>
-                <tbody style="font-size: 12px;">
-                <tr>
-                    <td>Classified ID</td>
-                    <td>012345</td>
-                </tr>
-                <tr>
-                    <td>Price</td>
-                    <td>550 EUR</td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td>New</td>
-                </tr>
-                <tr>
-                    <td>Brand</td>
-                    <td>Samsung</td>
-                </tr>
-                <tr>
-                    <td>Type</td>
-                    <td>Cell Phone</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>US, UK, CZ</td>
-                </tr>
-                <tr>
-                    <td>Returns</td>
-                    <td>14 days money back</td>
-                </tr>
-                <tr>
-                    <td>Payments</td>
-                    <td>PayPal, Credit Card</td>
-                </tr>
-                </tbody>
-            </table>
+            {% render_table product %}
             <div class="row">
                 <div class="col-md-12">
                     <span style="padding-left: 5px;"><strong>Seller:</strong></span>
@@ -165,3 +109,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

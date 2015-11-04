@@ -1,0 +1,13 @@
+
+ <ol class="breadcrumb">
+
+     <li><a href="{% url 'home' %}">Home</a></li>
+
+
+     {% for obj in path %}
+         <li><a href="{% url 'single_category' obj.slug %}">{{ obj }}</a></li>
+     {% endfor %}
+
+ </ol>
+
+<h2> {{ path | last }}</h2>

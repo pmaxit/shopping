@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
+{% load product_extras %}
 
 {% block content-right %}
 <div class="row content">
     <div class="col-lg-9 content-right">
-        <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            {% for obj in path %}
-                <li><a href="{% url 'single_category' obj.slug %}">{{ obj }}</a></li>
-            {% endfor %}
-        </ol>
-        <h2> {{ path | last }}</h2>
+        {% breadcrumbs category %}
 
         {% include 'browse.html' %}
 

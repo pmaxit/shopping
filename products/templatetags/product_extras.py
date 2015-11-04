@@ -29,6 +29,27 @@ def addClassWhenActive(context, object, cssClass):
     else:
         return "non-active"
 
+
+@register.inclusion_tag('breadcrumps.html', takes_context=True)
+def breadcrumbs(context, category):
+    path = []
+    cat = category
+    while cat:
+        path.insert(0,cat)
+        cat = cat.parent
+
+    return {
+        'path' : path
+    }
+
+@register.inclusion_tag('producttable.html')
+def render_table(productdict):
+    return{
+        'product' : productdict
+    }
+
+
+
 # Example of simple tags
 # these tags work independently on arguments and produce output
 @register.simple_tag
@@ -44,4 +65,3 @@ def do_comment(parser, token):
 class commentNode(template.Node):
     def render(self, context):
         return ''
-

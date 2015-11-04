@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Product, Category
 from django.views.generic import ListView, DetailView, CreateView
 from django.http import Http404
-
+import django_tables2 as tables
 import sys
 
 # Add your forms here
@@ -34,7 +34,7 @@ class CategoryListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'products/product_detail.html'
+    template_name = 'products/product_base_details.html'
     context_object_name = 'product'
 
 
@@ -49,21 +49,10 @@ class CategoryDetailView(DetailView):
     context_object_name = 'category'
     form = ProductSearchForm()
 
-    def get_path(self):
-        if self.object is None:
-            return Http404("Object does not exist")
-        path=[]
-
-        p = self.object
-        while(p  and len(path) < MAX_URL_PATH_LENGTH):
-            path.insert(0, p)
-            p = p.parent
-
-        return path
 
     def get_context_data(self, **kwargs):
         context = super(CategoryDetailView,self).get_context_data(**kwargs)
-        context['path']= self.get_path()
+
         #context['products'] = self.object.product_set.all().order_by('created_at')
 
         context['products'] = Product.objects.all().order_by('created_at')
