@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Product, Category
 from django.views.generic import ListView, DetailView, CreateView
 from django.http import Http404
-import django_tables2 as tables
 import sys
 
 # Add your forms here
